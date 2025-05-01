@@ -1,0 +1,34 @@
+plugins {
+    id 'org.springframework.boot' version '3.4.2' // Spring Boot plugin'i
+    id 'io.spring.dependency-management' version '1.1.4' // Dependency Management plugin'i
+    id 'java' // Java plugin'i
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '17' // Java 17 kullanıyoruz
+
+repositories {
+    mavenCentral() // Bağımlılıklar için Maven Central deposu
+}
+
+dependencies {
+    // Spring Boot bağımlılıkları
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    // MySQL bağımlılığı
+    runtimeOnly 'com.mysql:mysql-connector-j'
+
+    // Lombok bağımlılığı
+    compileOnly 'org.projectlombok:lombok:1.18.36'
+    annotationProcessor 'org.projectlombok:lombok:1.18.36'
+
+    // Test bağımlılıkları
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+test {
+    useJUnitPlatform() // JUnit 5 kullanımı
+}

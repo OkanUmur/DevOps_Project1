@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      args:
+        - SERVER_PORT=8082
+    ports:
+      - "8082:8082"
+    depends_on:
+      mysql:
+        condition: service_healthy
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/${DB_NAME:-hospital_management}
+      SPRING_DATASOURCE_USERNAME: ${MYSQL_USER:-okanumur}
+      SPRING_DATASOURCE_PASSWORD: ${MYSQL_PASSWORD:-21248210808bjk}
+      SERVER_PORT: ${SERVER_PORT:-8082}
+
+  mysql:
+    image: mysql:8.0
+    ports:
+      - "${MYSQL_HOST_PORT:-3307}:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-21248210808bjk}
+      MYSQL_DATABASE: ${DB_NAME:-hospital_management}
+      MYSQL_USER: ${MYSQL_USER:-okanumur}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-21248210808bjk}
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 5s
+      timeout: 10s
+      retries: 10
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+volumes:
+  mysql_data:
