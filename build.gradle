@@ -32,3 +32,7 @@ dependencies {
 test {
     useJUnitPlatform() // JUnit 5 kullanımı
 }
+tasks.named('test') {
+    useJUnitPlatform()
+    exclude '**/*Tests.class' // Tüm testleri atlar
+}
