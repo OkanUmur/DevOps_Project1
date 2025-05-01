@@ -26,16 +26,10 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok:1.18.36'
 
     // Test bağımlılıkları
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+   // testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
 test {
-    useJUnitPlatform() // JUnit 5 kullanımı
-}
-tasks.named('test') {
-    useJUnitPlatform()
-    exclude '**/*Tests.class' // Tüm testleri atlar
-}
-test {
     enabled = false
+   // useJUnitPlatform() // JUnit 5 kullanımı
 }
