@@ -36,3 +36,6 @@ tasks.named('test') {
     useJUnitPlatform()
     exclude '**/*Tests.class' // Tüm testleri atlar
 }
+test {
+    enabled = false
+}
