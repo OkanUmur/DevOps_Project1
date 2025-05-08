@@ -48,6 +48,7 @@ jobs:
         source: ${{ env.JAR_FILE }}
         target: "/home/azureuser/app/"
         overwrite: true
+        rm: true
 
     # Docker Image Oluşturma
     - name: Build Docker image
