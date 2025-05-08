@@ -32,3 +32,8 @@ build/
 ### VS Code ###
 .vscode/
 
+# .gitignore dosyası oluşturun
+echo "okanumur@" >> .gitignore
+git add .gitignore
+git commit -m "Remove large file"
+git push
