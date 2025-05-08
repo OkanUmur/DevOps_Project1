@@ -37,7 +37,7 @@ jobs:
         ./gradlew build -x test --no-daemon
 
     # Azure'a JAR Deploy (SCP ile)
-    # Deneme
+
     - name: Deploy JAR to Azure VM
       uses: appleboy/scp-action@v1
       with:
